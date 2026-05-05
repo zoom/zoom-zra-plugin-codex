@@ -12,9 +12,13 @@ zoom-sideload/
         ├── .codex-plugin/plugin.json
         ├── plugin.json
         ├── .app.json
+        ├── agents/
         ├── assets/
+        ├── commands/
+        ├── skills/
         ├── AGENTS.md
-        └── README.md
+        ├── README.md
+        └── ...
 ```
 
 Important details:
