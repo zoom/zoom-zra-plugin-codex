@@ -1,7 +1,7 @@
 {
   "name": "zoom",
   "version": "1.0.0",
-  "description": "Zoom plugin for connecting Codex to Zoom context and building Zoom integrations",
+  "description": "Connect Codex to Zoom meeting context and build Zoom apps, bots, API integrations, SDK workflows, webhooks, and automations.",
   "author": {
     "name": "Zoom",
     "url": "https://github.com/zoom"
@@ -27,8 +27,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Zoom",
-    "shortDescription": "Use Zoom context and build Zoom integrations.",
-    "longDescription": "Zoom connects Codex to Zoom meeting context and helps engineers choose the right Zoom product surface, design implementation plans, run deterministic setup and debugging workflows, review integrations with focused agents, and build across Zoom APIs and SDKs inside Codex.",
+    "shortDescription": "Use Zoom meeting context and build Zoom integrations.",
+    "longDescription": "Zoom connects Codex to Zoom meeting context through the Zoom app connector and provides developer workflows for planning, building, debugging, and reviewing Zoom integrations across APIs, SDKs, webhooks, WebSockets, bots, and automation use cases.",
     "developerName": "Zoom",
     "category": "Productivity",
     "capabilities": [

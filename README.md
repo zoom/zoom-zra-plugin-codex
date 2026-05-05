@@ -1,6 +1,6 @@
 # Zoom
 
-Zoom is a Codex plugin for connecting Codex to Zoom meeting context and for planning, building, and debugging Zoom integrations. It helps engineers search live Zoom context, choose the right Zoom product surface, shape implementation plans, debug failures, and route into Zoom API, SDK, webhook, bot, and automation references without reading the full Zoom doc tree first.
+Zoom connects Codex to Zoom meeting context through the Zoom app connector and provides developer workflows for planning, building, debugging, and reviewing Zoom integrations across APIs, SDKs, webhooks, WebSockets, bots, and automation use cases.
 
 ## Plugin Shape
 
