@@ -113,6 +113,9 @@ Codex can invoke skills implicitly from task descriptions, or explicitly by ment
 | [`build-zoom-rtms-app`](skills/rtms/SKILL.md) | Route into Zoom RTMS for live media, transcript, and event-stream workflows |
 | [`setup-zoom-webhooks`](skills/webhooks/SKILL.md) | Set up Zoom webhook subscriptions, signature verification, and handlers |
 | [`setup-zoom-websockets`](skills/websockets/SKILL.md) | Set up Zoom WebSocket event delivery when it fits better than webhooks |
+| [`scribe`](skills/scribe/SKILL.md) | Build AI Services transcription pipelines for uploaded or stored media |
+| [`summarizer`](skills/summarizer/SKILL.md) | Build AI Services transcript recap, summary, and action item workflows |
+| [`translator`](skills/translator/SKILL.md) | Build AI Services text translation and localization workflows |
 | [`build-zoom-team-chat-app`](skills/team-chat/SKILL.md) | Build Team Chat user or chatbot integrations |
 | [`build-zoom-phone-integration`](skills/phone/SKILL.md) | Build Zoom Phone integrations around Smart Embed, APIs, and events |
 | [`build-zoom-contact-center-app`](skills/contact-center/SKILL.md) | Build Contact Center app, web, or native integrations |
@@ -130,6 +133,9 @@ The plugin keeps the Zoom product-specific reference library under `skills/`. Th
 - [`skills/websockets/`](skills/websockets/)
 - [`skills/rtms/`](skills/rtms/)
 - [`skills/oauth/`](skills/oauth/)
+- [`skills/scribe/`](skills/scribe/)
+- [`skills/summarizer/`](skills/summarizer/)
+- [`skills/translator/`](skills/translator/)
 
 ## Example Prompts
 
@@ -151,4 +157,8 @@ Run /debug-zoom-webhook to diagnose why Zoom events reach the endpoint but signa
 
 ```text
 Run /plan-zoom-product for an internal meeting assistant that needs summaries, action items, and follow-up docs so we pick the right Zoom surface first.
+```
+
+```text
+Use $summarizer and $translator to turn a transcript into action items and localized follow-up notes.
 ```

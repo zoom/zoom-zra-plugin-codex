@@ -14,6 +14,8 @@ Background reference for cross-product Zoom developer questions. Prefer the work
 | Build an app that runs inside the Zoom client | [zoom-apps-sdk](../../zoom-apps-sdk/SKILL.md) |
 | Access live meeting media or transcripts | [rtms](../../rtms/SKILL.md) |
 | Transcribe uploaded or stored media | [scribe](../../scribe/SKILL.md) |
+| Summarize transcript text | [summarizer](../../summarizer/SKILL.md) |
+| Translate plain text or text files | [translator](../../translator/SKILL.md) |
 | Enable collaborative browsing for support | [cobrowse-sdk](../../cobrowse-sdk/SKILL.md) |
 | Build Contact Center apps and channel integrations | [contact-center](../../contact-center/SKILL.md) |
 | Build Virtual Agent web or mobile chatbot experiences | [virtual-agent](../../virtual-agent/SKILL.md) |
@@ -31,6 +33,7 @@ Background reference for cross-product Zoom developer questions. Prefer the work
 - If the user asks for account, user, meeting, recording, reporting, or scheduled automation, route to REST API.
 - If the user asks for event ingestion, choose Webhooks for HTTP delivery and WebSockets for lower-latency persistent connections.
 - If the user asks for live media, raw streams, or live transcripts, route to RTMS and pair it with Meeting SDK or REST only when needed.
+- If the user asks for transcript recap, summary, action items, or localization, route to Summarizer or Translator and chain Scribe only when media must be transcribed first.
 - If the user asks for an app inside the Zoom client, route to Zoom Apps SDK.
 - If auth, scopes, redirect handling, or token refresh are involved, chain OAuth guidance.
 
@@ -50,6 +53,7 @@ Background reference for cross-product Zoom developer questions. Prefer the work
 |---|---|---|
 | [Meeting + Webhooks + OAuth Refresh](../references/meeting-webhooks-oauth-refresh-orchestration.md) | Create a meeting, process real-time updates, and refresh OAuth tokens safely | [rest-api](../../rest-api/SKILL.md) + [oauth](../../oauth/SKILL.md) + [webhooks](../../webhooks/SKILL.md) |
 | [Scribe Transcription Pipeline](../use-cases/scribe-transcription-pipeline.md) | Transcribe uploaded files or S3 archives | [scribe](../../scribe/SKILL.md) |
+| [AI Services Text Intelligence](../use-cases/ai-services-text-intelligence.md) | Chain Scribe, Summarizer, and Translator for transcript summary and localization workflows | [scribe](../../scribe/SKILL.md) + [summarizer](../../summarizer/SKILL.md) + [translator](../../translator/SKILL.md) |
 | [Custom Meeting UI (Web)](../use-cases/custom-meeting-ui-web.md) | Build a custom video UI for a real Zoom meeting | [meeting-sdk](../../meeting-sdk/SKILL.md) |
 | [Meeting Automation](../use-cases/meeting-automation.md) | Schedule, update, and delete meetings programmatically | [rest-api](../../rest-api/SKILL.md) |
 | [Meeting Bots](../use-cases/meeting-bots.md) | Build bots that join meetings for AI, transcription, or recording | [meeting-sdk/linux](../../meeting-sdk/linux/SKILL.md) + [rest-api](../../rest-api/SKILL.md) |
@@ -65,7 +69,9 @@ Background reference for cross-product Zoom developer questions. Prefer the work
 - [App types](app-types.md)
 - [Scopes](scopes.md)
 - [Marketplace](marketplace.md)
+- [Environment variables](environment-variables.md)
 - [Query routing playbook](query-routing-playbook.md)
+- [Routing implementation](routing-implementation.md)
 - [Automatic REST and webhook chaining](automatic-skill-chaining-rest-webhooks.md)
 - [Meeting webhook and OAuth refresh orchestration](meeting-webhooks-oauth-refresh-orchestration.md)
 - [Distributed meeting fallback architecture](distributed-meeting-fallback-architecture.md)

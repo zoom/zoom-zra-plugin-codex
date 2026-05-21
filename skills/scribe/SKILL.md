@@ -5,7 +5,7 @@ description: Use when using Scribe.
 
 # Zoom AI Services Scribe
 
-Use this skill for Zoom Scribe transcription pipelines over uploaded or stored media. If the user needs live meeting media, compare against RTMS or Meeting SDK bot workflows first.
+Use this skill for Zoom Scribe transcription pipelines over uploaded or stored media. If the user needs live meeting media, compare against RTMS or Meeting SDK bot workflows first; if the user needs summaries or translations after transcription, chain Summarizer or Translator.
 
 ## Workflow
 
@@ -24,3 +24,5 @@ Use this skill for Zoom Scribe transcription pipelines over uploaded or stored m
 - Batch webhook pipeline: [examples/batch-webhook-pipeline.md](examples/batch-webhook-pipeline.md)
 - API reference: [references/api-reference.md](references/api-reference.md)
 - Common drift and breaks: [troubleshooting/common-drift-and-breaks.md](troubleshooting/common-drift-and-breaks.md)
+- Chain summaries: [../summarizer/SKILL.md](../summarizer/SKILL.md)
+- Chain translations: [../translator/SKILL.md](../translator/SKILL.md)
