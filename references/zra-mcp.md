@@ -1,6 +1,11 @@
 # Zoom Revenue Accelerator MCP Reference
 
-Source: https://developers.zoom.us/docs/mcp/zoom-revenue-accelerator/
+Public references:
+
+- Zoom MCP registry entry: https://github.com/zoom/mcp-registry/blob/main/zoom-revenue-accelerator/server.json
+- Zoom MCP connection guide: https://developers.zoom.us/docs/mcp/servers/connect-to-zoom-mcp-servers/
+
+The 15-tool list below comes from live `tools/list` testing against the production streamable endpoint on 2026-07-01.
 
 ## Server
 
@@ -20,7 +25,7 @@ This plugin is designed for the streamable endpoint. It does not include `.mcp.j
 
 ## App-Backed OAuth Flow
 
-1. User installs or enables the Zoom ZRA app connector in Codex.
+1. User installs or enables the Zoom Revenue Accelerator app connector in Codex.
 2. The connector starts the Zoom Marketplace OAuth flow.
 3. Zoom returns the authorization result to the app connector callback.
 4. Codex receives the resulting app access token through the connector.
@@ -115,22 +120,39 @@ Each current MCP tool has at least one primary command and skill route.
 | `search_internal_users` | `/resolve-zra-team-scope` | `zra-team-scope` |
 | `get_manager_team_and_member` | `/resolve-zra-team-scope` | `zra-team-scope` |
 
-## Planned OAuth App Scopes
+## OAuth App Scopes
 
-The existing ZRA read/write scopes remain relevant to conversation, deal, activity, comment, scorecard, analysis, and indicator workflows. Live testing also confirmed these scopes are required for the new customer/contact/user tools:
+The Zoom Marketplace app connected to this plugin should include the ZRA scopes needed by the live MCP tool surface. Some configured app scopes are write, update, or delete scopes, but the current MCP tools exposed to this plugin are retrieval-oriented; the presence of those OAuth scopes does not mean this plugin can write back to ZRA.
 
 ```text
+zra:write:conversation_comment
+zra:delete:conversations
+zra:delete:conversation_comment
+zra:delete:deal_activity
+zra:read:conversation_crm_associations
+zra:update:conversation_comment
+zra:update:conversation_host
+zra:read:conversation_analysis
+zra:read:list_conversation_comments
+zra:read:conversation_participants
+zra:read:conversation_scorecards
+zra:read:deal
+zra:read:list_deal_activities
+zra:read:list_conversations
+zra:read:conversations
+zra:read:list_deals
+zra:read:indicator
 zra:read:crm_customer_contact
 zra:read:user
 ```
 
-Keep the app scope list aligned with the live tool surface before marketplace submission.
+Keep the app scope list aligned with the live MCP tool surface and the Zoom Marketplace app configuration.
 
 ## Capability Boundary
 
 The live ZRA MCP tools used by this plugin are retrieval-oriented. Skills may synthesize recommendations, coaching notes, risk flags, customer-context briefs, transcript evidence, and follow-up drafts in Codex, but they must not claim that the plugin sends emails, updates CRM records, schedules meetings, writes comments, deletes conversations, modifies ZRA records, or creates external tasks.
 
-Confirm the final scope list in the Zoom Marketplace app before submission. Use the live MCP `tools/list` result and official MCP page as the source of truth if the tool list or scopes change.
+Use the live MCP `tools/list` result, missing-scope errors, and the official MCP page as the source of truth if the tool list or scopes change.
 
 ## Tool Rules
 

@@ -6,7 +6,7 @@
     "name": "Zoom",
     "url": "https://github.com/zoom"
   },
-  "homepage": "https://developers.zoom.us/docs/mcp/zoom-revenue-accelerator/",
+  "homepage": "https://github.com/zoom/zoom-zra-plugin-codex",
   "license": "MIT",
   "keywords": [
     "zoom",
@@ -26,9 +26,9 @@
   "apps": "./.app.json",
   "skills": "./skills/",
   "interface": {
-    "displayName": "Zoom ZRA",
+    "displayName": "Zoom Revenue Accelerator",
     "shortDescription": "Review ZRA data and draft sales workflow outputs in Codex.",
-    "longDescription": "Zoom ZRA connects Codex to Zoom Revenue Accelerator through a Zoom app connector and the ZRA MCP server. It uses the current ZRA MCP tools to review conversations and transcripts, assess deal health, build customer context, review indicators, resolve team/user scope, triage pipeline risk, prepare coaching notes, and draft post-call follow-up artifacts in Codex. It does not send emails, update CRM records, schedule meetings, or write back to ZRA.",
+    "longDescription": "Zoom Revenue Accelerator connects Codex to ZRA through a Zoom app connector and the ZRA MCP server. It uses the current ZRA MCP tools to review conversations and transcripts, assess deal health, build customer context, review indicators, resolve team/user scope, triage pipeline risk, prepare coaching notes, and draft post-call follow-up artifacts in Codex. It does not send emails, update CRM records, schedule meetings, or write back to ZRA.",
     "developerName": "Zoom",
     "category": "Sales",
     "capabilities": [

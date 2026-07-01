@@ -4,7 +4,7 @@ description: Check and document the app-backed Zoom Revenue Accelerator MCP setu
 
 # Setup ZRA MCP
 
-Use this command when installing or validating the Zoom ZRA plugin's app-backed MCP connection.
+Use this command when installing or validating the Zoom Revenue Accelerator plugin's app-backed MCP connection.
 
 ## Preflight
 
@@ -24,7 +24,7 @@ Use this command when installing or validating the Zoom ZRA plugin's app-backed 
 1. Inspect `.app.json`, `.codex-plugin/plugin.json`, and README setup notes.
 2. Verify the plugin name is `zoom-zra` to avoid collision with the original `zoom` plugin.
 3. Verify the app connector is expected to own OAuth and token handoff.
-4. Confirm the app has the planned ZRA OAuth scopes listed in [`references/zra-mcp.md`](../references/zra-mcp.md), including customer/contact and user read scopes for the current 15-tool surface.
+4. Confirm the app has the ZRA OAuth scopes listed in [`references/zra-mcp.md`](../references/zra-mcp.md), including customer/contact and user read scopes for the current 15-tool surface.
 5. Confirm the plugin uses the current tool names and does not reference removed pre-July 2026 tools.
 6. Produce setup findings.
 

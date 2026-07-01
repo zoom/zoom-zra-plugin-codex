@@ -1,6 +1,6 @@
-# Zoom ZRA
+# Zoom Revenue Accelerator
 
-Zoom ZRA is a Codex plugin for Zoom Revenue Accelerator workflows. It connects Codex to the Zoom Revenue Accelerator MCP server through a Zoom Marketplace app connector, then uses returned ZRA data to support sales review, triage, coaching, and drafting workflows in Codex.
+Zoom Revenue Accelerator is a Codex plugin for Zoom Revenue Accelerator workflows. It connects Codex to the Zoom Revenue Accelerator MCP server through a Zoom Marketplace app connector, then uses returned ZRA data to support sales review, triage, coaching, and drafting workflows in Codex.
 
 The production ZRA MCP endpoint is:
 
@@ -10,7 +10,7 @@ https://mcp.zoom.us/mcp/revenue_accelerator/streamable
 
 ## MCP Connection
 
-This plugin uses the Zoom ZRA app connector in [`.app.json`](.app.json) and the production Zoom Revenue Accelerator MCP endpoint above. It does not require a local `.mcp.json`.
+This plugin uses the Zoom Revenue Accelerator app connector in [`.app.json`](.app.json) and the production Zoom Revenue Accelerator MCP endpoint above. It does not require a local `.mcp.json`.
 
 ## Plugin Shape
 
@@ -25,9 +25,9 @@ This plugin uses the Zoom ZRA app connector in [`.app.json`](.app.json) and the 
 
 This plugin intentionally does not include a local `.mcp.json`. The expected path is app-backed OAuth: the Zoom Marketplace app initiates the OAuth flow, Codex receives the resulting app access token through the connector, and the connector uses that token with the ZRA MCP server.
 
-## What Zoom ZRA Does
+## What Zoom Revenue Accelerator Does
 
-Use Zoom ZRA when you want Codex to:
+Use Zoom Revenue Accelerator when you want Codex to:
 
 - review a ZRA sales conversation for summary, next steps, objections, coaching signals, and scorecards
 - find transcript-backed evidence from a ZRA conversation

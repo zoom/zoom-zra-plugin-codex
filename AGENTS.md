@@ -1,6 +1,6 @@
-# Zoom ZRA
+# Zoom Revenue Accelerator
 
-This repository contains the `Zoom ZRA` plugin for Codex.
+This repository contains the `Zoom Revenue Accelerator` plugin for Codex.
 
 Its purpose is to help users:
 
@@ -18,4 +18,4 @@ The live ZRA MCP surface changed on 2026-07-01. Use the current 15 tools documen
 
 Capability boundary: the current live ZRA MCP tools used by this plugin are retrieval-oriented. Do not claim that the plugin sends emails, updates CRM, schedules meetings, creates external tasks, writes comments, deletes conversations, modifies ZRA records, or performs other external side effects unless a write-capable MCP tool is actually exposed and documented.
 
-The plugin uses the Zoom ZRA app connector ID configured in `.app.json`. Keep metadata, screenshots, skills, and command references aligned with the current ZRA MCP surface before future releases.
+The plugin uses the Zoom Revenue Accelerator app connector ID configured in `.app.json`. Keep metadata, screenshots, skills, and command references aligned with the current ZRA MCP surface before future releases.

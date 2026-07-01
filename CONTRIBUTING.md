@@ -1,6 +1,6 @@
-# Contributing to Zoom ZRA
+# Contributing to Zoom Revenue Accelerator
 
-This repository contains the `Zoom ZRA` Codex plugin. Changes should stay focused on Zoom Revenue Accelerator MCP workflows.
+This repository contains the `Zoom Revenue Accelerator` Codex plugin. Changes should stay focused on Zoom Revenue Accelerator MCP workflows.
 
 ## Scope
 

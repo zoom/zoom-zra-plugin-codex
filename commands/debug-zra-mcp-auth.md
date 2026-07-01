@@ -4,12 +4,12 @@ description: Diagnose Zoom Revenue Accelerator MCP app OAuth, token handoff, end
 
 # Debug ZRA MCP Auth
 
-Use this command when the Zoom ZRA plugin installs but cannot authenticate or call the ZRA MCP server.
+Use this command when the Zoom Revenue Accelerator plugin installs but cannot authenticate or call the ZRA MCP server.
 
 ## Preflight
 
 1. Capture the exact error text and whether it happens during install, OAuth callback, MCP connection, or a tool call.
-2. Check whether `.app.json` contains the expected Zoom ZRA app connector ID.
+2. Check whether `.app.json` contains the expected Zoom Revenue Accelerator app connector ID.
 3. Confirm the server URL is `https://mcp.zoom.us/mcp/revenue_accelerator/streamable`.
 4. Confirm the user has access to Zoom Revenue Accelerator data.
 

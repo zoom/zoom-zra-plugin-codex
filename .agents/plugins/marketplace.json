@@ -1,7 +1,7 @@
 {
   "name": "zoom-zra-local",
   "interface": {
-    "displayName": "Zoom ZRA Local"
+    "displayName": "Zoom Revenue Accelerator Local"
   },
   "plugins": [
     {
