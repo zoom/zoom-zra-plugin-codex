@@ -1,7 +1,7 @@
 {
   "name": "zoom-zra",
   "version": "1.0.0",
-  "description": "Read Zoom Revenue Accelerator data through MCP and use Codex to review conversations, transcripts, customers, deals, pipeline risk, team scope, coaching notes, and follow-up drafts.",
+  "description": "Read Zoom Revenue Accelerator data through MCP and use Codex to review conversations, transcripts, customers, deals, indicators, pipeline risk, team scope, coaching notes, and follow-up drafts.",
   "author": {
     "name": "Zoom",
     "url": "https://github.com/zoom"
@@ -28,7 +28,7 @@
   "interface": {
     "displayName": "Zoom ZRA",
     "shortDescription": "Review ZRA data and draft sales workflow outputs in Codex.",
-    "longDescription": "Zoom ZRA connects Codex to Zoom Revenue Accelerator through a Zoom app connector and the ZRA MCP server. It uses the current ZRA MCP tools to review conversations and transcripts, assess deal health, build customer context, resolve team/user scope, triage pipeline risk, prepare coaching notes, and draft post-call follow-up artifacts in Codex. It does not send emails, update CRM records, schedule meetings, or write back to ZRA.",
+    "longDescription": "Zoom ZRA connects Codex to Zoom Revenue Accelerator through a Zoom app connector and the ZRA MCP server. It uses the current ZRA MCP tools to review conversations and transcripts, assess deal health, build customer context, review indicators, resolve team/user scope, triage pipeline risk, prepare coaching notes, and draft post-call follow-up artifacts in Codex. It does not send emails, update CRM records, schedule meetings, or write back to ZRA.",
     "developerName": "Zoom",
     "category": "Sales",
     "capabilities": [
@@ -44,12 +44,13 @@
       "Build a customer brief for Acme from ZRA.",
       "Find where pricing was discussed in my last ZRA call.",
       "Show my at-risk deals closing this month.",
+      "Review pricing-objection indicators in my recent ZRA calls.",
       "Prep my 1:1 coaching agenda from recent ZRA calls.",
       "Draft a follow-up package from my last ZRA conversation."
     ],
     "brandColor": "#0B5CFF",
     "composerIcon": "./assets/zra-small.svg",
-    "logo": "./assets/zra-logo.svg",
+    "logo": "./assets/zra-logo.png",
     "screenshots": [
       "./assets/screenshot-1.png",
       "./assets/screenshot-2.png",

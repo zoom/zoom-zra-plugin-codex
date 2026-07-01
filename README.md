@@ -8,9 +8,9 @@ The production ZRA MCP endpoint is:
 https://mcp.zoom.us/mcp/revenue_accelerator/streamable
 ```
 
-## Gold Release Status
+## MCP Connection
 
-This plugin is configured for gold release with the Zoom ZRA app connector in [`.app.json`](.app.json), the production ZRA MCP endpoint, and the live 15-tool MCP surface verified on 2026-07-01.
+This plugin uses the Zoom ZRA app connector in [`.app.json`](.app.json) and the production Zoom Revenue Accelerator MCP endpoint above. It does not require a local `.mcp.json`.
 
 ## Plugin Shape
 
@@ -37,6 +37,7 @@ Use Zoom ZRA when you want Codex to:
 - triage visible pipeline or forecast risk from returned deal data
 - resolve reps, teams, managers, and managed-team scope for downstream workflows
 - prepare a manager coaching agenda from recent ZRA conversation data
+- review ZRA indicator trackers and find conversations where tracked topics appear
 - debug app-backed ZRA MCP authentication and endpoint setup
 
 ## Capability Boundary
@@ -57,6 +58,7 @@ The live ZRA MCP server currently exposes retrieval-oriented tools. This plugin 
 | [`/review-zra-deal`](commands/review-zra-deal.md) | Assess one ZRA deal |
 | [`/triage-zra-pipeline`](commands/triage-zra-pipeline.md) | Triage pipeline or forecast risk |
 | [`/prepare-zra-coaching-agenda`](commands/prepare-zra-coaching-agenda.md) | Prepare a 1:1 or coaching agenda from visible conversation data |
+| [`/review-zra-indicator`](commands/review-zra-indicator.md) | Review ZRA indicators and related conversations |
 | [`/resolve-zra-team-scope`](commands/resolve-zra-team-scope.md) | Resolve reps, teams, managers, and downstream scope filters |
 | [`/setup-zra-mcp`](commands/setup-zra-mcp.md) | Check the app-backed ZRA MCP setup |
 | [`/debug-zra-mcp-auth`](commands/debug-zra-mcp-auth.md) | Diagnose app OAuth, token handoff, and ZRA MCP auth issues |
@@ -73,11 +75,30 @@ The live ZRA MCP server currently exposes retrieval-oriented tools. This plugin 
 | [`zra-deal-review`](skills/zra-deal-review/SKILL.md) | Assess deal health and risk |
 | [`zra-pipeline-triage`](skills/zra-pipeline-triage/SKILL.md) | Triage a scoped pipeline |
 | [`zra-coaching-agenda`](skills/zra-coaching-agenda/SKILL.md) | Prepare coaching or 1:1 agendas from visible conversation data |
+| [`zra-indicator-review`](skills/zra-indicator-review/SKILL.md) | Review tracked indicators and related conversations |
 | [`zra-team-scope`](skills/zra-team-scope/SKILL.md) | Resolve teams, managers, members, and users for scoped workflows |
 
 ## MCP Coverage
 
 The plugin is written around the public Zoom Revenue Accelerator MCP server documented by Zoom. Live `tools/list` testing on 2026-07-01 returned 15 tools covering conversations, transcripts, comments, scorecards, deals, deal activities, deal analysis, stages, indicators, customer accounts, customer contacts, internal users, and team/member scope.
+
+| MCP tool | Primary command | Primary skill |
+|---|---|---|
+| `search_conversations` | [`/review-zra-conversation`](commands/review-zra-conversation.md) | [`zra-conversation-review`](skills/zra-conversation-review/SKILL.md) |
+| `get_conversation_analysis` | [`/review-zra-conversation`](commands/review-zra-conversation.md) | [`zra-conversation-review`](skills/zra-conversation-review/SKILL.md) |
+| `get_conversation_transcript` | [`/find-zra-transcript-evidence`](commands/find-zra-transcript-evidence.md) | [`zra-transcript-evidence`](skills/zra-transcript-evidence/SKILL.md) |
+| `get_conversation_comments` | [`/review-zra-conversation`](commands/review-zra-conversation.md) | [`zra-conversation-review`](skills/zra-conversation-review/SKILL.md) |
+| `get_scorecard_sessions` | [`/prepare-zra-coaching-agenda`](commands/prepare-zra-coaching-agenda.md) | [`zra-coaching-agenda`](skills/zra-coaching-agenda/SKILL.md) |
+| `search_deals` | [`/triage-zra-pipeline`](commands/triage-zra-pipeline.md) | [`zra-pipeline-triage`](skills/zra-pipeline-triage/SKILL.md) |
+| `get_deal_detail_v2` | [`/review-zra-deal`](commands/review-zra-deal.md) | [`zra-deal-review`](skills/zra-deal-review/SKILL.md) |
+| `get_deal_activities_v2` | [`/review-zra-deal`](commands/review-zra-deal.md) | [`zra-deal-review`](skills/zra-deal-review/SKILL.md) |
+| `get_deal_analysis` | [`/review-zra-deal`](commands/review-zra-deal.md) | [`zra-deal-review`](skills/zra-deal-review/SKILL.md) |
+| `get_deal_stages` | [`/triage-zra-pipeline`](commands/triage-zra-pipeline.md) | [`zra-pipeline-triage`](skills/zra-pipeline-triage/SKILL.md) |
+| `search_indicators` | [`/review-zra-indicator`](commands/review-zra-indicator.md) | [`zra-indicator-review`](skills/zra-indicator-review/SKILL.md) |
+| `get_customer_accounts` | [`/review-zra-customer`](commands/review-zra-customer.md) | [`zra-customer-context`](skills/zra-customer-context/SKILL.md) |
+| `get_customer_contacts` | [`/review-zra-customer`](commands/review-zra-customer.md) | [`zra-customer-context`](skills/zra-customer-context/SKILL.md) |
+| `search_internal_users` | [`/resolve-zra-team-scope`](commands/resolve-zra-team-scope.md) | [`zra-team-scope`](skills/zra-team-scope/SKILL.md) |
+| `get_manager_team_and_member` | [`/resolve-zra-team-scope`](commands/resolve-zra-team-scope.md) | [`zra-team-scope`](skills/zra-team-scope/SKILL.md) |
 
 Do not use the removed pre-July 2026 tool names (`list_all_conversations`, `list_all_deals`, old `_by_id` tools, or old team tools). Use the current tools in [`references/zra-mcp.md`](references/zra-mcp.md).
 
@@ -107,6 +128,10 @@ Run /triage-zra-pipeline for my deals closing this month and flag the ones that 
 
 ```text
 Use $zra-coaching-agenda to prep coaching notes from my recent calls.
+```
+
+```text
+Run /review-zra-indicator for pricing objections this quarter.
 ```
 
 ```text

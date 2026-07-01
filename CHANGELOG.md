@@ -13,4 +13,4 @@ All notable changes to this plugin are documented in this file.
 - Added the Zoom ZRA app connector ID.
 - Updated skills, commands, and references for the live 15-tool ZRA MCP surface from 2026-07-01.
 - Added customer context, transcript evidence, and team/user scope skills.
-- Prepared the plugin for gold release.
+- Added indicator review command and skill coverage for the current ZRA MCP tool surface.

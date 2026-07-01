@@ -2,8 +2,8 @@
 name: zra-start
 description: >
   Route Zoom Revenue Accelerator requests to the right skill. Use when the user asks
-  about ZRA conversations, transcripts, deals, pipeline, customers, contacts, team
-  scope, coaching, or post-call draft artifacts.
+  about ZRA conversations, transcripts, deals, pipeline, customers, contacts,
+  indicators, team scope, coaching, or post-call draft artifacts.
 ---
 
 # Skill: ZRA Start
@@ -26,6 +26,7 @@ Load [`../../references/zra-tool-rules.md`](../../references/zra-tool-rules.md) 
 | Review one deal | `zra-deal-review` |
 | Review pipeline or forecast risk | `zra-pipeline-triage` |
 | Prepare coaching or 1:1 notes | `zra-coaching-agenda` |
+| Review tracked indicators, objections, competitors, or recurring themes | `zra-indicator-review` |
 | Understand an account, contact, or customer relationship | `zra-customer-context` |
 | Resolve reps, teams, managed scope, or team-specific filters | `zra-team-scope` |
 | Auth/setup failures | `/setup-zra-mcp` or `/debug-zra-mcp-auth` |
@@ -38,6 +39,7 @@ Load [`../../references/zra-tool-rules.md`](../../references/zra-tool-rules.md) 
 - "How is this deal?" -> `zra-deal-review`.
 - "At-risk deals", "forecast", "pipeline" -> `zra-pipeline-triage`.
 - "Coach", "1:1", "call quality across calls" -> `zra-coaching-agenda`.
+- "Indicator", "objection", "competitor", "tracked topic", or "where did this theme show up?" -> `zra-indicator-review`.
 - "Customer/account/contact context" -> `zra-customer-context`.
 - "Team", "rep", "manager", "managed team", "scope" -> `zra-team-scope`.
 

@@ -4,12 +4,12 @@ description: Route a Zoom Revenue Accelerator request to the right ZRA MCP workf
 
 # ZRA Start
 
-Use this command when the user asks a broad or ambiguous ZRA question involving conversations, transcripts, deals, pipeline, customers, contacts, teams, coaching, or follow-up drafts.
+Use this command when the user asks a broad or ambiguous ZRA question involving conversations, transcripts, deals, pipeline, customers, contacts, indicators, teams, coaching, or follow-up drafts.
 
 ## Preflight
 
 1. Confirm the request is about Zoom Revenue Accelerator data.
-2. Identify the likely object: conversation, transcript, deal, pipeline, account/contact, team/user scope, coaching, or follow-up artifact.
+2. Identify the likely object: conversation, transcript, deal, pipeline, account/contact, indicator, team/user scope, coaching, or follow-up artifact.
 3. Note whether app-backed MCP access is required.
 
 ## Plan
@@ -26,9 +26,10 @@ Use this command when the user asks a broad or ambiguous ZRA question involving 
 4. Route deal health checks to `/review-zra-deal`.
 5. Route pipeline or forecast risk to `/triage-zra-pipeline`.
 6. Route coaching or 1:1 prep to `/prepare-zra-coaching-agenda`.
-7. Route customer/account/contact context to `/review-zra-customer`.
-8. Route rep/team/manager scoping to `/resolve-zra-team-scope`.
-9. Route auth or connector setup issues to `/setup-zra-mcp` or `/debug-zra-mcp-auth`.
+7. Route indicator, objection, competitor, or tracked-topic analysis to `/review-zra-indicator`.
+8. Route customer/account/contact context to `/review-zra-customer`.
+9. Route rep/team/manager scoping to `/resolve-zra-team-scope`.
+10. Route auth or connector setup issues to `/setup-zra-mcp` or `/debug-zra-mcp-auth`.
 
 ## Verification
 

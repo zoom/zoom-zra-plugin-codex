@@ -8,6 +8,7 @@ Its purpose is to help users:
 - review ZRA conversations, transcripts, scorecards, comments, and content analysis
 - build customer/account/contact context from returned ZRA data
 - assess deal health using ZRA deal detail, deal activities, and linked conversations
+- review ZRA indicators and related conversations
 - resolve managed-team, team, and internal-user scope for downstream workflows
 - triage visible pipeline and forecast risk from returned ZRA deal data
 - prepare coaching agendas from recent ZRA conversation data

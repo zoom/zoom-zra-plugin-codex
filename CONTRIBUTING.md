@@ -11,6 +11,7 @@ Accepted changes should improve one of these surfaces:
 - ZRA transcript evidence workflows
 - ZRA customer/account/contact context workflows
 - ZRA deal review workflows
+- ZRA indicator and related conversation workflows
 - ZRA pipeline triage workflows
 - ZRA coaching agenda workflows
 - ZRA team/user scope resolution workflows

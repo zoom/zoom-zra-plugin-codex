@@ -93,6 +93,28 @@ Live shape testing on 2026-07-01 returned these stable top-level shapes. See [`z
 | `search_internal_users` | may return an empty object or result set |
 | `get_manager_team_and_member` | `data_items[]`, `total` |
 
+## Command and Skill Coverage
+
+Each current MCP tool has at least one primary command and skill route.
+
+| MCP tool | Primary command | Primary skill |
+|---|---|---|
+| `search_conversations` | `/review-zra-conversation` | `zra-conversation-review` |
+| `get_conversation_analysis` | `/review-zra-conversation` | `zra-conversation-review` |
+| `get_conversation_transcript` | `/find-zra-transcript-evidence` | `zra-transcript-evidence` |
+| `get_conversation_comments` | `/review-zra-conversation` | `zra-conversation-review` |
+| `get_scorecard_sessions` | `/prepare-zra-coaching-agenda` | `zra-coaching-agenda` |
+| `search_deals` | `/triage-zra-pipeline` | `zra-pipeline-triage` |
+| `get_deal_detail_v2` | `/review-zra-deal` | `zra-deal-review` |
+| `get_deal_activities_v2` | `/review-zra-deal` | `zra-deal-review` |
+| `get_deal_analysis` | `/review-zra-deal` | `zra-deal-review` |
+| `get_deal_stages` | `/triage-zra-pipeline` | `zra-pipeline-triage` |
+| `search_indicators` | `/review-zra-indicator` | `zra-indicator-review` |
+| `get_customer_accounts` | `/review-zra-customer` | `zra-customer-context` |
+| `get_customer_contacts` | `/review-zra-customer` | `zra-customer-context` |
+| `search_internal_users` | `/resolve-zra-team-scope` | `zra-team-scope` |
+| `get_manager_team_and_member` | `/resolve-zra-team-scope` | `zra-team-scope` |
+
 ## Planned OAuth App Scopes
 
 The existing ZRA read/write scopes remain relevant to conversation, deal, activity, comment, scorecard, analysis, and indicator workflows. Live testing also confirmed these scopes are required for the new customer/contact/user tools:
