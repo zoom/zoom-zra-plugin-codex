@@ -1,6 +1,67 @@
-interface:
-  display_name: "Zoom"
-  short_description: "Use Zoom reviewer agents for scope audits and integration reviews"
-  icon_small: "./assets/zoom-small.svg"
-  icon_large: "./assets/app-icon.svg"
-  default_prompt: "Use Zoom reviewer agents to audit scopes and review Zoom integrations for architectural and implementation issues."
+name: Zoom ZRA
+display_name: Zoom ZRA
+description: >
+  Read Zoom Revenue Accelerator data through MCP for conversation review,
+  transcript evidence, customer context, deal assessment, team scoping, coaching
+  prep, pipeline triage, and in-chat follow-up drafts.
+
+app_dependencies:
+  - name: Zoom ZRA app connector
+    required: true
+    notes: >
+      Uses the Zoom Marketplace app connector configured in .app.json. The
+      connector should complete OAuth and pass the resulting access token to
+      Codex for the ZRA MCP server.
+
+mcp_dependencies:
+  - name: Zoom Revenue Accelerator MCP Server
+    url: https://developers.zoom.us/docs/mcp/zoom-revenue-accelerator/
+    endpoint: https://mcp.zoom.us/mcp/revenue_accelerator/streamable
+    required: true
+
+skills:
+  - name: zra-start
+    path: skills/zra-start/SKILL.md
+    implicit: true
+    description: Route ZRA requests to the right workflow.
+
+  - name: zra-conversation-review
+    path: skills/zra-conversation-review/SKILL.md
+    description: Review a sales conversation for recap, analysis, transcript evidence, comments, and scorecards.
+
+  - name: zra-transcript-evidence
+    path: skills/zra-transcript-evidence/SKILL.md
+    description: Find transcript-backed evidence for exact language, topics, objections, and commitments.
+
+  - name: zra-follow-up-package
+    path: skills/zra-follow-up-package/SKILL.md
+    description: Draft a post-call follow-up package with email draft, recap, and action items.
+
+  - name: zra-customer-context
+    path: skills/zra-customer-context/SKILL.md
+    description: Build account, customer, contact, stakeholder, deal, and conversation context.
+
+  - name: zra-deal-review
+    path: skills/zra-deal-review/SKILL.md
+    description: Review deal health with evidence-based risk flags and next actions.
+
+  - name: zra-pipeline-triage
+    path: skills/zra-pipeline-triage/SKILL.md
+    description: Triage pipeline and forecast risk.
+
+  - name: zra-coaching-agenda
+    path: skills/zra-coaching-agenda/SKILL.md
+    description: Prepare a 1:1 or coaching agenda from visible ZRA conversation data.
+
+  - name: zra-team-scope
+    path: skills/zra-team-scope/SKILL.md
+    description: Resolve reps, managers, managed teams, and team-specific filters for ZRA workflows.
+
+default_prompts:
+  - Review my latest sales call in ZRA
+  - Find where pricing was discussed in my last ZRA call
+  - Build a customer brief for Acme from ZRA
+  - How is the Acme deal looking in ZRA?
+  - Show my at-risk deals closing this month
+  - Prep coaching notes from my recent ZRA calls
+  - Draft a follow-up package from my last ZRA call

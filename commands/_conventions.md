@@ -1,70 +1,26 @@
 # Command Conventions
 
-Every slash command in this plugin follows a consistent structure so Codex produces reliable, verifiable Zoom workflow results. Every non-underscore file in `commands/` must include all required sections below.
+Every slash command in this plugin is ZRA MCP-specific and follows the same operational shape.
 
 ## Required Sections
 
-### 1. Preflight
+Each user-facing command file must include:
 
-Check prerequisites before doing any work:
+- `Preflight`
+- `Plan`
+- `Commands`
+- `Verification`
+- `Summary`
+- `Next Steps`
 
-- Inspect the current repo for the relevant Zoom surface, framework, and existing integration code.
-- Confirm required local tools are available before relying on them.
-- Note missing credentials, env vars, callback routes, or endpoint URLs before attempting setup or debugging.
-- Flag dirty working tree or risky production-impacting changes when they matter to the requested workflow.
+## Rules
 
-Preflight failures should produce clear next actions. Do not silently skip them.
-
-### 2. Plan
-
-State what will happen before execution:
-
-- List the files, commands, and external checks the workflow will use.
-- Call out any destructive or production-impacting step and require explicit user confirmation.
-- If there are multiple viable paths, state which one was chosen and why.
-
-### 3. Commands
-
-The operational core. Follow these conventions:
-
-- Prefer read-first inspection before making code or config changes.
-- Never print secret values. Show env var names, scope names, file paths, and metadata only.
-- Use structured output when available.
-- Prefer the narrowest Zoom surface that actually solves the task.
-- Do not claim OAuth, webhook, or SDK setup succeeded without checking the relevant evidence.
-
-### 4. Verification
-
-After execution, confirm the outcome:
-
-- Re-read the changed files or live state.
-- Verify the exact auth, signature, endpoint, or config path that was modified.
-- Surface errors, warnings, and unresolved blockers explicitly.
-
-### 5. Summary
-
-Present a concise result block:
-
-```text
-## Result
-- Action: what was done
-- Status: success | partial | failed
-- Details: key files, env vars, endpoints, or findings
-```
-
-### 6. Next Steps
-
-Suggest the logical follow-up:
-
-- setup flows -> test auth or live API connectivity
-- debug flows -> rerun the failing path with the fix applied
-- review flows -> apply the recommended fixes or narrow the scope
-
-## File Naming
-
-- Command files live in `commands/` and end in `.md`.
-- Files prefixed with `_` are conventions or meta docs, not user-facing commands.
-
-## Frontmatter
-
-Every command file must include YAML frontmatter with at least a `description` field.
+- Use the app-backed ZRA MCP path; do not instruct users to configure `.mcp.json` for this plugin.
+- Treat `https://mcp.zoom.us/mcp/revenue_accelerator/streamable` as the production streamable endpoint.
+- Never print OAuth access tokens, refresh tokens, app secrets, or private conversation content beyond what the user asked to use.
+- Resolve human-language names into IDs before detail calls.
+- Use current `scope` filters exactly as documented in [`../references/zra-tool-rules.md`](../references/zra-tool-rules.md).
+- Do not call removed tools such as `list_all_conversations`, `list_all_deals`, `get_deal_detail`, or `get_conversation_content_analysis_by_id`.
+- Bound enrichment calls to avoid rate-limit pressure.
+- Distinguish tool facts, ZRA AI analysis, human comments, and Codex synthesis.
+- Produce drafts and recommendations in Codex only; do not send, post, update CRM, create external records, modify ZRA, or imply any external side effect.

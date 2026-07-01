@@ -1,186 +1,60 @@
-# Contributing to Zoom
+# Contributing to Zoom ZRA
 
-Thank you for your interest in contributing. This document covers changes to the `Zoom` Codex plugin.
+This repository contains the `Zoom ZRA` Codex plugin. Changes should stay focused on Zoom Revenue Accelerator MCP workflows.
 
-## Ways to Contribute
+## Scope
 
-You can contribute in any of these ways:
+Accepted changes should improve one of these surfaces:
 
-1. Submit a pull request with improvements.
-2. Raise an issue on GitHub for bugs, gaps, or enhancement ideas.
-3. Reach out on the [Zoom Developer Forum](https://devforum.zoom.us/) with feedback and improvement suggestions for these agent skills.
+- ZRA MCP app-backed OAuth setup and token handoff guidance
+- ZRA conversation review workflows
+- ZRA transcript evidence workflows
+- ZRA customer/account/contact context workflows
+- ZRA deal review workflows
+- ZRA pipeline triage workflows
+- ZRA coaching agenda workflows
+- ZRA team/user scope resolution workflows
+- ZRA follow-up package workflows
+- ZRA MCP tool rules, scopes, pagination, and rate-limit behavior
 
-### 1. Report Issues
-- Documentation errors or outdated information
-- Missing use cases or scenarios
-- Incorrect code examples
+Avoid adding non-ZRA Zoom platform material unless it directly supports ZRA MCP usage.
 
-### 2. Improve Documentation
-- Fix typos and clarify explanations
-- Add missing code examples
-- Update for new SDK versions
+## Skill Guidelines
 
-### 3. Add New Skills
-- New use cases
-- New platform coverage
-- New integration patterns
+Every skill must:
 
-## Contribution Process
+- live under `skills/<skill-name>/SKILL.md`
+- use YAML frontmatter with `name` and `description`
+- reference [`references/zra-tool-rules.md`](references/zra-tool-rules.md) when it depends on ZRA MCP tool behavior
+- resolve human-language requests to stable IDs before detail calls
+- distinguish tool-returned facts, ZRA AI analysis, human comments, and agent synthesis
+- avoid unsupported benchmarks, hidden historical claims, or fabricated deal risk signals
+- use the current ZRA MCP tool names documented in [`references/zra-mcp.md`](references/zra-mcp.md)
 
-### For Small Changes (typos, clarifications)
+## Command Guidelines
 
-1. Fork the repository
-2. Make your changes
-3. Submit a pull request with a clear description
+Every command in `commands/` must include:
 
-### For Larger Changes (new use cases, skills)
+- frontmatter with `description`
+- `Preflight`
+- `Plan`
+- `Commands`
+- `Verification`
+- `Summary`
+- `Next Steps`
 
-1. Open an issue first to discuss the proposed change
-2. Fork the repository
-3. Create a feature branch
-4. Follow the skill format guidelines below
-5. Submit a pull request
+Commands should read first, avoid printing secrets, and make it explicit when app auth or MCP access is blocked.
 
-## Skill Format Guidelines
+Do not add removed MCP tool names or stale argument shapes. Use `search_conversations`, `search_deals`, `get_deal_detail_v2`, `get_deal_activities_v2`, `get_manager_team_and_member`, and the other current tools documented in [`references/zra-mcp.md`](references/zra-mcp.md).
 
-### SKILL.md Structure
+## Validation
 
-```markdown
----
-name: skill-name
-description: |
-  Brief description (1-3 sentences).
-  Include when to use this skill.
----
+Before a future commit, run:
 
-# Skill Title
-
-[Content following the template in PLAN.md]
+```bash
+jq empty .codex-plugin/plugin.json .app.json .agents/plugins/marketplace.json
+python3 /home/dreamtcs/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py .
+grep -R -n -i -E "old Zoom plugin wording|copied developer plugin wording" . --exclude-dir=.git
 ```
 
-### Guidelines
-
-1. **Keep SKILL.md under 500 lines** - Move details to `references/`
-2. **Max 3 directory levels** - `skill/references/file.md`
-3. **Include code examples** - Real, working code developers can use
-4. **Document gotchas** - Common mistakes and limitations
-5. **Link to official sources** - Prefer Zoom documentation
-
-### Maintenance Checklist
-
-Use this checklist before merging documentation or skill changes:
-
-1. Confirm you are editing the correct skill or product folder.
-2. Keep `SKILL.md` as the entrypoint in every skill directory.
-3. If examples include credentials, reference `.env` keys rather than hardcoded values.
-4. Never commit machine-local absolute paths or machine-specific endpoints.
-5. After moving or renaming docs, update cross-links from the relevant parent `SKILL.md` files.
-6. Verify frontmatter stays accurate: `name`, `description`, and any optional fields such as `triggers`, `argument-hint`, or `user-invocable`.
-7. Remove dead links and stale product claims after any refactor or version update.
-8. Make sure every new markdown file is reachable from at least one parent navigation file.
-9. Track deprecations and renames explicitly so future updates remain migration-safe.
-
-### Repository Naming Conventions
-
-- Keep canonical skill folder names aligned with [skills/start/SKILL.md](skills/start/SKILL.md).
-- Current canonical folders include:
-- `general`, `rest-api`, `webhooks`, `websockets`, `meeting-sdk`, `video-sdk`, `zoom-apps-sdk`
-- `rtms`, `team-chat`, `ui-toolkit`, `cobrowse-sdk`, `oauth`
-- `contact-center`, `virtual-agent`, `phone`, `rivet-sdk`, `probe-sdk`
-
-### Markdown Linking Rules (Required)
-
-- Use real markdown links for local docs (for example: `text -> docs/example.md`).
-- Do not use backticks for local doc references if you want them counted in relationship graphs.
-- Use repository-relative paths; do not commit machine-local absolute paths (for example `/home/your-user/...`).
-- Every new `.md` file should be linked from at least one parent/index/`SKILL.md` file.
-
-## Using AI Assistants for Contributions
-
-You can use Codex or another AI assistant to help create or improve skills:
-
-### Recommended Workflow
-
-1. **Research Phase**
-   ```
-   Research the official Zoom documentation for [topic].
-   Check the developer forum for common issues.
-   Find working code examples.
-   ```
-
-2. **Drafting Phase**
-   ```
-   Create a skill following the SKILL.md template.
-   Include practical code examples.
-   Document known limitations and gotchas.
-   ```
-
-3. **Validation Phase**
-   ```
-   Cross-check all information with official Zoom docs.
-   Verify code examples are syntactically correct.
-   Ensure links are valid.
-   ```
-
-### Assistant Usage Tips
-
-- **Be specific**: "Create a use case for RTMS audio streaming to S3" not "write about RTMS"
-- **Provide context**: Share relevant existing skills as examples
-- **Iterate**: Review drafts and ask for improvements
-- **Verify**: Always cross-check AI-generated content with official sources
-
-### What AI Assistants Can Help With
-
-| Task | How Assistants Help |
-|------|------------------|
-| Research | Search docs, forums, GitHub for information |
-| Drafting | Create initial skill content following templates |
-| Code examples | Generate working code snippets |
-| Cross-referencing | Check consistency across skills |
-| Formatting | Ensure markdown is correct |
-
-### What Requires Human Review
-
-| Task | Why Human Review |
-|------|------------------|
-| Technical accuracy | AI may hallucinate APIs or features |
-| Real-world gotchas | Comes from actual development experience |
-| Business logic | Zoom-specific requirements and policies |
-| Security practices | Must be verified against official guidance |
-
-## Quality Standards
-
-### Do
-
-- Verify all claims with official documentation
-- Include working, tested code examples
-- Document known limitations prominently
-- Link to official resources
-- Keep examples simple and practical
-- Check that moved or renamed docs still have inbound links
-- Remove outdated guidance that no longer matches the current plugin structure
-
-### Don't
-
-- Include unverified information
-- Speculate about undocumented behavior
-- Copy proprietary code without permission
-- Include outdated or deprecated APIs without noting it
-- Over-engineer examples
-
-## Code of Conduct
-
-- Be respectful and constructive
-- Focus on improving the documentation
-- Credit sources appropriately
-- Follow Zoom's developer terms of service
-
-## Questions?
-
-- Open a GitHub issue for questions about contributing
-- Check existing issues before creating new ones
-- Join the [Zoom Developer Forum](https://devforum.zoom.us/) for Zoom-specific questions, feedback, and improvement requests for these agent skills
-
-## License
-
-By contributing, you agree that your contributions will be licensed under the MIT License.
+The last command should return no stale generic-plugin references except intentional historical notes, if any.
